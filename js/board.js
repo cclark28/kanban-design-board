@@ -197,16 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="column__header-right">
           <button class="column__menu-btn icon-btn" title="Column options">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-              <circle cx="8" cy="3" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="8" cy="13" r="1.5"/>
-            </svg>
+            <span class="material-icons md-16">more_vert</span>
           </button>
         </div>
       </div>
       <div class="column__body"></div>
       <div class="column__footer">
         <button class="add-card-btn">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2Z"/></svg>
+          <span class="material-icons md-14">add</span>
           Add Card
         </button>
       </div>

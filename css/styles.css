@@ -304,8 +304,20 @@ img { display: block; max-width: 100%; }
   padding: 24px 24px 48px;
   overflow-x: auto;
   min-height: calc(100vh - 60px);
-  background: #f7f9fe;
+  background: #ffffff;
 }
+
+/* ===== Material Icons sizing ===== */
+.material-icons {
+  font-size: 18px;
+  line-height: 1;
+  vertical-align: middle;
+  user-select: none;
+}
+.material-icons.md-14 { font-size: 14px; }
+.material-icons.md-16 { font-size: 16px; }
+.material-icons.md-20 { font-size: 20px; }
+.material-icons.md-24 { font-size: 24px; }
 
 .column {
   flex-shrink: 0;

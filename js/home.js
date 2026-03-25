@@ -31,9 +31,7 @@ function renderBoards() {
         <div class="board-tile__meta">${count} card${count !== 1 ? 's' : ''}</div>
       </div>
       <button class="board-tile__menu-btn" aria-label="Board menu" title="Board options">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-          <circle cx="8" cy="3" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="8" cy="13" r="1.5"/>
-        </svg>
+        <span class="material-icons md-16">more_vert</span>
       </button>
     `;
 
