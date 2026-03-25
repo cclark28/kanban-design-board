@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Boards — Kanban</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <span class="app-header__title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-4px;margin-right:6px">
+        <rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="11" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/>
+      </svg>
+      My Boards
+    </span>
+    <button class="btn btn--primary" id="new-board-btn">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2Z"/></svg>
+      New Board
+    </button>
+  </header>
+
+  <main class="home-main">
+    <div id="boards-grid" class="boards-grid"></div>
+
+    <div id="empty-state" class="empty-state" hidden>
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="11" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/>
+      </svg>
+      <h2>No boards yet</h2>
+      <p>Create your first board to start collecting design inspiration.</p>
+      <button class="btn btn--primary" id="empty-new-board-btn" onclick="document.getElementById('new-board-btn').click()">
+        Create a board
+      </button>
+    </div>
+  </main>
+
+  <!-- New Board Dialog -->
+  <div id="new-board-dialog" class="dialog-backdrop" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <h2 id="dialog-title">New Board</h2>
+      <div class="form-group">
+        <label class="form-label" for="new-board-name">Board name</label>
+        <input type="text" id="new-board-name" class="form-input" placeholder="e.g. UI Inspiration" maxlength="60" autocomplete="off">
+      </div>
+      <div class="form-group" style="margin-top:12px">
+        <label class="form-label" for="new-board-color">Accent color</label>
+        <div class="dialog-row">
+          <input type="color" id="new-board-color" value="#6366f1" style="width:40px;height:36px;padding:2px;border:1px solid var(--color-border);border-radius:6px;cursor:pointer">
+          <div id="color-presets" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <!-- filled by JS -->
+          </div>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="new-board-cancel">Cancel</button>
+        <button class="btn btn--primary" id="new-board-submit">Create Board</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import drop overlay -->
+  <div id="import-drop" class="import-drop-overlay" hidden>
+    Drop JSON to import board
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/home.js"></script>
+  <script>
+    // Color presets
+    const presets = ['#6366f1','#8b5cf6','#ec4899','#f59e0b','#10b981','#3b82f6','#ef4444','#14b8a6'];
+    const container = document.getElementById('color-presets');
+    presets.forEach(c => {
+      const swatch = document.createElement('button');
+      swatch.type = 'button';
+      swatch.style.cssText = `width:22px;height:22px;border-radius:50%;background:${c};border:2px solid transparent;cursor:pointer;padding:0;transition:.1s`;
+      swatch.title = c;
+      swatch.addEventListener('click', () => {
+        document.getElementById('new-board-color').value = c;
+        container.querySelectorAll('button').forEach(b => b.style.borderColor = 'transparent');
+        swatch.style.borderColor = '#fff';
+      });
+      container.appendChild(swatch);
+    });
+  </script>
+</body>
+</html>
